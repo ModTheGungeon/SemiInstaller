@@ -1,0 +1,454 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Installer.cs" type="Script" id=1]
+[ext_resource path="res://gfx/gungeon.png" type="Texture" id=2]
+[ext_resource path="res://04b03.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://04b03.tres" type="DynamicFont" id=4]
+[ext_resource path="res://gfx/settings.png" type="Texture" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+font_data = ExtResource( 3 )
+
+[node name="Installer" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="MainPanel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="ColumnBox" type="HBoxContainer" parent="MainPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+custom_constants/separation = 20
+
+[node name="LeftPane" type="VBoxContainer" parent="MainPanel/ColumnBox"]
+margin_right = 674.0
+margin_bottom = 417.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LargeImage" type="TextureRect" parent="MainPanel/ColumnBox/LeftPane"]
+margin_right = 674.0
+margin_bottom = 417.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 5
+
+[node name="InstallLog" type="TextEdit" parent="MainPanel/ColumnBox/LeftPane"]
+visible = false
+margin_right = 674.0
+margin_bottom = 397.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+readonly = true
+wrap_enabled = true
+
+[node name="ErrorLabel" type="Label" parent="MainPanel/ColumnBox/LeftPane"]
+visible = false
+margin_top = 401.0
+margin_right = 674.0
+margin_bottom = 417.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "An error has occured."
+
+[node name="ErrorButtons" type="HBoxContainer" parent="MainPanel/ColumnBox/LeftPane"]
+visible = false
+margin_top = 395.0
+margin_right = 674.0
+margin_bottom = 417.0
+size_flags_horizontal = 3
+
+[node name="Discord" type="Button" parent="MainPanel/ColumnBox/LeftPane/ErrorButtons"]
+margin_right = 335.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Get help on Discord"
+
+[node name="LogHaste" type="Button" parent="MainPanel/ColumnBox/LeftPane/ErrorButtons"]
+margin_left = 339.0
+margin_right = 674.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Copy log"
+
+[node name="MainInterface" type="VBoxContainer" parent="MainPanel/ColumnBox"]
+margin_left = 694.0
+margin_right = 1368.0
+margin_bottom = 417.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Title" type="Label" parent="MainPanel/ColumnBox/MainInterface"]
+margin_right = 674.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "SEMI MOD LOADER"
+align = 1
+valign = 1
+
+[node name="ExeSelect" type="HBoxContainer" parent="MainPanel/ColumnBox/MainInterface"]
+margin_top = 50.0
+margin_right = 674.0
+margin_bottom = 76.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MainPanel/ColumnBox/MainInterface/ExeSelect"]
+margin_top = 5.0
+margin_right = 114.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 4 )
+text = "GUNGEON PATH"
+
+[node name="LineEdit" type="LineEdit" parent="MainPanel/ColumnBox/MainInterface/ExeSelect"]
+margin_left = 118.0
+margin_right = 646.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+editable = false
+placeholder_text = "..."
+
+[node name="Button" type="Button" parent="MainPanel/ColumnBox/MainInterface/ExeSelect"]
+margin_left = 650.0
+margin_right = 674.0
+margin_bottom = 26.0
+custom_fonts/font = ExtResource( 4 )
+text = "..."
+
+[node name="NewsTitle" type="Label" parent="MainPanel/ColumnBox/MainInterface"]
+margin_top = 80.0
+margin_right = 674.0
+margin_bottom = 126.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "NEWS"
+valign = 2
+uppercase = true
+
+[node name="NewsContent" type="Label" parent="MainPanel/ColumnBox/MainInterface"]
+margin_top = 130.0
+margin_right = 674.0
+margin_bottom = 316.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+custom_fonts/font = ExtResource( 4 )
+text = "No news :("
+autowrap = true
+
+[node name="Buttons" type="HBoxContainer" parent="MainPanel/ColumnBox/MainInterface"]
+margin_top = 320.0
+margin_right = 674.0
+margin_bottom = 376.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Install" type="Button" parent="MainPanel/ColumnBox/MainInterface/Buttons"]
+margin_right = 608.0
+margin_bottom = 56.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "INSTALL"
+
+[node name="Settings" type="Button" parent="MainPanel/ColumnBox/MainInterface/Buttons"]
+margin_left = 612.0
+margin_right = 674.0
+margin_bottom = 56.0
+icon = ExtResource( 5 )
+
+[node name="Copyright" type="Label" parent="MainPanel/ColumnBox/MainInterface"]
+margin_top = 380.0
+margin_right = 674.0
+margin_bottom = 415.0
+custom_fonts/font = ExtResource( 4 )
+text = "(c)Copyright 2016-2019 Mod the Gungeon Contributors
+Licensed under MIT"
+align = 2
+
+[node name="AdvancedInterface" type="VBoxContainer" parent="MainPanel/ColumnBox"]
+visible = false
+margin_left = 412.0
+margin_right = 820.0
+margin_bottom = 417.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="MainPanel/ColumnBox/AdvancedInterface"]
+margin_right = 408.0
+margin_bottom = 61.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "ADVANCED SETTINGS"
+align = 1
+valign = 1
+
+[node name="Warning" type="Label" parent="MainPanel/ColumnBox/AdvancedInterface"]
+margin_top = 65.0
+margin_right = 408.0
+margin_bottom = 100.0
+custom_fonts/font = ExtResource( 4 )
+text = "Note: don't change these settings unless you know what they are for!"
+autowrap = true
+
+[node name="Settings" type="ScrollContainer" parent="MainPanel/ColumnBox/AdvancedInterface"]
+margin_top = 104.0
+margin_right = 408.0
+margin_bottom = 350.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="SettingsList" type="VBoxContainer" parent="MainPanel/ColumnBox/AdvancedInterface/Settings"]
+margin_right = 408.0
+margin_bottom = 246.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Component" type="HBoxContainer" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList"]
+margin_right = 408.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/Component"]
+margin_top = 5.0
+margin_right = 88.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 4 )
+text = "Component"
+
+[node name="Content" type="LineEdit" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/Component"]
+margin_left = 92.0
+margin_right = 408.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 6.0
+custom_fonts/font = ExtResource( 4 )
+text = "semi"
+
+[node name="Architecture" type="HBoxContainer" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList"]
+margin_top = 30.0
+margin_right = 408.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/Architecture"]
+margin_top = 3.0
+margin_right = 102.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 4 )
+text = "Architecture"
+
+[node name="ArchList" type="MenuButton" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/Architecture"]
+margin_left = 106.0
+margin_right = 408.0
+margin_bottom = 22.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 6.0
+custom_fonts/font = ExtResource( 4 )
+text = "..."
+flat = false
+
+[node name="Log" type="CheckBox" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList"]
+margin_top = 56.0
+margin_right = 408.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Show log while installing"
+
+[node name="ForceHTTP" type="CheckBox" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList"]
+margin_top = 84.0
+margin_right = 408.0
+margin_bottom = 108.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Force insecure HTTP"
+
+[node name="SkipVersionChecks" type="CheckBox" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList"]
+margin_top = 112.0
+margin_right = 408.0
+margin_bottom = 136.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Skip version check"
+
+[node name="ForceBackup" type="CheckBox" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList"]
+margin_top = 140.0
+margin_right = 408.0
+margin_bottom = 164.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Force backup from current state"
+
+[node name="LeavePatchDLLs" type="CheckBox" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList"]
+margin_top = 168.0
+margin_right = 408.0
+margin_bottom = 192.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Leave MonoMod patch DLLs"
+
+[node name="Offline" type="CheckBox" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList"]
+margin_top = 168.0
+margin_right = 408.0
+margin_bottom = 192.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Offline Mode"
+
+[node name="Buttons" type="HBoxContainer" parent="MainPanel/ColumnBox/AdvancedInterface"]
+margin_top = 354.0
+margin_right = 408.0
+margin_bottom = 417.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="OK" type="Button" parent="MainPanel/ColumnBox/AdvancedInterface/Buttons"]
+margin_right = 408.0
+margin_bottom = 63.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "OK"
+
+[node name="Copyright" type="Label" parent="MainPanel/ColumnBox/AdvancedInterface"]
+margin_left = 504.0
+margin_top = 191.0
+margin_right = 956.0
+margin_bottom = 226.0
+custom_fonts/font = ExtResource( 4 )
+text = "(c)Copyright 2016-2019 Mod the Gungeon Contributors
+Licensed under MIT"
+align = 2
+
+[node name="HostControllerInterface" type="VBoxContainer" parent="MainPanel/ColumnBox"]
+visible = false
+margin_left = 412.0
+margin_right = 820.0
+margin_bottom = 417.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TopLabel2" type="Label" parent="MainPanel/ColumnBox/HostControllerInterface"]
+margin_right = 408.0
+margin_bottom = 68.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "HOST CONTROLLER SETTINGS"
+align = 1
+valign = 1
+
+[node name="Settings" type="ScrollContainer" parent="MainPanel/ColumnBox/HostControllerInterface"]
+margin_top = 72.0
+margin_right = 408.0
+margin_bottom = 344.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainPanel/ColumnBox/HostControllerInterface/Settings"]
+margin_right = 408.0
+margin_bottom = 272.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ForceHTTP" type="CheckBox" parent="MainPanel/ColumnBox/HostControllerInterface/Settings/VBoxContainer"]
+margin_right = 408.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Install updates on startup"
+
+[node name="SkipVersionChecks" type="CheckBox" parent="MainPanel/ColumnBox/HostControllerInterface/Settings/VBoxContainer"]
+margin_top = 28.0
+margin_right = 408.0
+margin_bottom = 52.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Silent"
+
+[node name="Button" type="Button" parent="MainPanel/ColumnBox/HostControllerInterface/Settings/VBoxContainer"]
+margin_top = 56.0
+margin_right = 408.0
+margin_bottom = 78.0
+custom_fonts/font = ExtResource( 4 )
+text = "Uninstall Host Controller"
+
+[node name="Buttons2" type="HBoxContainer" parent="MainPanel/ColumnBox/HostControllerInterface"]
+margin_top = 348.0
+margin_right = 408.0
+margin_bottom = 417.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="MainPanel/ColumnBox/HostControllerInterface/Buttons2"]
+margin_right = 408.0
+margin_bottom = 69.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "OK"
+
+[node name="Copyright" type="Label" parent="MainPanel/ColumnBox/HostControllerInterface"]
+margin_left = 504.0
+margin_top = 191.0
+margin_right = 956.0
+margin_bottom = 226.0
+custom_fonts/font = ExtResource( 4 )
+text = "(c)Copyright 2016-2019 Mod the Gungeon Contributors
+Licensed under MIT"
+align = 2
+
+[node name="ExeFileDialog" type="FileDialog" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+window_title = "Open a File"
+mode = 0
+access = 2
+filters = PoolStringArray( "EtG.exe", "EtG_OSX", "EtG.x86", "EtG.x86_64" )
+current_dir = "/home/zatherz/Projects/ModTheGungeon/Installer.Godot"
+current_path = "/home/zatherz/Projects/ModTheGungeon/Installer.Godot/"
+
+[connection signal="pressed" from="MainPanel/ColumnBox/LeftPane/ErrorButtons/Discord" to="." method="_on_Discord_pressed"]
+[connection signal="pressed" from="MainPanel/ColumnBox/LeftPane/ErrorButtons/LogHaste" to="." method="_on_LogHaste_pressed"]
+[connection signal="pressed" from="MainPanel/ColumnBox/MainInterface/ExeSelect/Button" to="." method="_on_ExePathButton_pressed"]
+[connection signal="pressed" from="MainPanel/ColumnBox/MainInterface/Buttons/Install" to="." method="_on_Install_pressed"]
+[connection signal="pressed" from="MainPanel/ColumnBox/MainInterface/Buttons/Settings" to="." method="_on_Settings_pressed"]
+[connection signal="text_changed" from="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/Component/Content" to="." method="_on_ComponentContent_text_changed"]
+[connection signal="toggled" from="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/Log" to="." method="_on_Log_toggled"]
+[connection signal="toggled" from="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/ForceHTTP" to="." method="_on_ForceHTTP_toggled"]
+[connection signal="toggled" from="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/SkipVersionChecks" to="." method="_on_SkipVersionChecks_toggled"]
+[connection signal="toggled" from="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/ForceBackup" to="." method="_on_ForceBackup_toggled"]
+[connection signal="toggled" from="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/LeavePatchDLLs" to="." method="_on_LeavePatchDLLs_toggled"]
+[connection signal="toggled" from="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/Offline" to="." method="_on_Offline_toggled"]
+[connection signal="pressed" from="MainPanel/ColumnBox/AdvancedInterface/Buttons/OK" to="." method="_on_OK_pressed"]
+[connection signal="file_selected" from="ExeFileDialog" to="." method="_on_ExeFileDialog_file_selected"]

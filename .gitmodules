@@ -1,0 +1,4 @@
+[submodule "libs/Installer.Headless"]
+	path = libs/Installer.Headless
+	url = https://github.com/modthegungeon/Installer.Headless
+        ignore = dirty
