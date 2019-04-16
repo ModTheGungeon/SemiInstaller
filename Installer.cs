@@ -85,6 +85,7 @@ public class Installer : Control {
 	public Button InstallErrorLogHasteButton;
 
 	public FileDialog ExeFileDialog;
+	public WindowDialog ETGModWarningDialog;
 
 	public bool PathIsAutodetected = true;
 
@@ -152,13 +153,12 @@ public class Installer : Control {
 	}
 
 	public class InstallThreadUserdata : Godot.Object {
-		public InstallerFrontend.InstallerOptions Options;
+		public InstallerFrontend Frontend;
 		public string Component;
 		public string ExePath;
 	}
 	public void InstallThread(InstallThreadUserdata userdata) {
-		System.Console.WriteLine($"on install thread");
-		var inst = new InstallerFrontend(userdata.Options);
+		var inst = userdata.Frontend;
 
 		var components = new List<ComponentInfo>();
 		components.Add(new ComponentInfo(userdata.Component, null));
@@ -179,15 +179,25 @@ public class Installer : Control {
 		if (OptionLeavePatchDLLs.Pressed) opts |= InstallerFrontend.InstallerOptions.LeavePatchDLLs;
 		if (OptionSkipVersionCheck.Pressed) opts |= InstallerFrontend.InstallerOptions.SkipVersionChecks;
 
+		var inst = new InstallerFrontend(opts);
+		if (inst.HasETGModInstalled(GungeonPath.Text)) {
+			ETGModWarningDialog.Popup_();
+			return;
+		}
+
 		if (OptionShowLog.Pressed) {
 			LargeImage.Hide();
 			InstallLog.Show();
 		}
 
+		InstallButton.Disabled = true;
+		SettingsButton.Disabled = true;
+		ExeFileButton.Disabled = true;
+
 		var data = new InstallThreadUserdata {
 			Component = OptionComponent.Text,
 			ExePath = GungeonPath.Text,
-			Options = opts
+			Frontend = inst
 		};
 
 		InstallationDone = false;
@@ -258,6 +268,7 @@ public class Installer : Control {
 		OptionOffline = GetNode<CheckBox>("MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/Offline");
 
 		ExeFileDialog = GetNode<FileDialog>("ExeFileDialog");
+		ETGModWarningDialog = GetNode<WindowDialog>("ETGModWarning");
 
 		CurrentInterface = MainInterface;
 
@@ -370,9 +381,6 @@ public class Installer : Control {
 	}
 
 	private void _on_Install_pressed() {
-		InstallButton.Disabled = true;
-		SettingsButton.Disabled = true;
-		ExeFileButton.Disabled = true;
 		Install();
 	}
 

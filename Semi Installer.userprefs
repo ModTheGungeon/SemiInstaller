@@ -1,13 +1,13 @@
 ﻿<Properties StartupConfiguration="{14668D9A-D210-4255-B921-FB2665223CE1}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Settings.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="libs/Installer.Headless/MTGInstaller/src/InstallerFrontend.cs">
     <Files>
       <File FileName="libs/Installer.Headless/MTGInstaller/src/Installer.cs" Line="1" Column="1" />
       <File FileName="libs/Installer.Headless/MTGInstaller/src/Options.cs" Line="1" Column="1" />
-      <File FileName="Installer.cs" Line="40" Column="38" />
-      <File FileName="libs/Installer.Headless/MTGInstaller/src/Program.cs" Line="127" Column="6" />
-      <File FileName="libs/Installer.Headless/MTGInstaller/src/InstallerFrontend.cs" Line="29" Column="3" />
-      <File FileName="libs/Installer.Headless/MTGInstaller/src/Settings.cs" Line="16" Column="3" />
-      <File FileName="Settings.cs" Line="2" Column="13" />
+      <File FileName="Installer.cs" Line="184" Column="27" />
+      <File FileName="libs/Installer.Headless/MTGInstaller/src/Program.cs" Line="1" Column="1" />
+      <File FileName="libs/Installer.Headless/MTGInstaller/src/InstallerFrontend.cs" Line="1" Column="1" />
+      <File FileName="libs/Installer.Headless/MTGInstaller/src/Settings.cs" Line="1" Column="1" />
+      <File FileName="Settings.cs" Line="45" Column="31" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.MTGInstaller PreferredExecutionTarget="MonoDevelop.Default" />

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Installer.cs" type="Script" id=1]
 [ext_resource path="res://gfx/gungeon.png" type="Texture" id=2]
@@ -12,6 +12,9 @@ bg_color = Color( 0, 0, 0, 1 )
 [sub_resource type="DynamicFont" id=2]
 size = 8
 font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=3]
+default_font = ExtResource( 4 )
 
 [node name="Installer" type="Control"]
 anchor_right = 1.0
@@ -437,6 +440,34 @@ access = 2
 filters = PoolStringArray( "EtG.exe", "EtG_OSX", "EtG.x86", "EtG.x86_64" )
 current_dir = "/home/zatherz/Projects/ModTheGungeon/Installer.Godot"
 current_path = "/home/zatherz/Projects/ModTheGungeon/Installer.Godot/"
+
+[node name="ETGModWarning" type="WindowDialog" parent="."]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 100.0
+margin_top = 100.0
+margin_right = -100.0
+margin_bottom = -100.0
+theme = SubResource( 3 )
+window_title = "Error"
+
+[node name="Panel" type="Panel" parent="ETGModWarning"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="ETGModWarning/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = 138.0
+custom_fonts/font = ExtResource( 4 )
+text = "The installer has detected a legacy ETGMod installation in your game files. Semi is incompatible with ETGMod and cannot be installed.
+In order to allow for Semi to be installed, please remove the entire game folder and reinstall it (for example, by verifying files on Steam). It's important that you first delete the entire game folder, as the \"reinstall\" option on certain platforms, including Steam, will not remove files added by mods.
+Once you've reinstalled the game, you will be able to use this installer to install Semi."
+autowrap = true
 
 [connection signal="pressed" from="MainPanel/ColumnBox/LeftPane/ErrorButtons/Discord" to="." method="_on_Discord_pressed"]
 [connection signal="pressed" from="MainPanel/ColumnBox/LeftPane/ErrorButtons/LogHaste" to="." method="_on_LogHaste_pressed"]
