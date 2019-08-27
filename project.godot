@@ -16,6 +16,10 @@ _global_script_class_icons={
 [application]
 
 config/name="Semi Installer"
+run/main_scene="res://Installer.tscn"
+boot_splash/image="res://logo.png"
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0.25098, 0.168627, 0.407843, 1 )
 config/icon="res://icon.png"
 
 [display]

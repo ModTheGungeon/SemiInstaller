@@ -36,13 +36,13 @@ margin_bottom = -10.0
 custom_constants/separation = 20
 
 [node name="LeftPane" type="VBoxContainer" parent="MainPanel/ColumnBox"]
-margin_right = 674.0
+margin_right = 348.0
 margin_bottom = 417.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="LargeImage" type="TextureRect" parent="MainPanel/ColumnBox/LeftPane"]
-margin_right = 674.0
+margin_right = 348.0
 margin_bottom = 417.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -92,15 +92,15 @@ custom_fonts/font = ExtResource( 4 )
 text = "Copy log"
 
 [node name="MainInterface" type="VBoxContainer" parent="MainPanel/ColumnBox"]
-margin_left = 694.0
-margin_right = 1368.0
+margin_left = 368.0
+margin_right = 820.0
 margin_bottom = 417.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="Title" type="Label" parent="MainPanel/ColumnBox/MainInterface"]
-margin_right = 674.0
+margin_right = 452.0
 margin_bottom = 46.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -111,7 +111,7 @@ valign = 1
 
 [node name="ExeSelect" type="HBoxContainer" parent="MainPanel/ColumnBox/MainInterface"]
 margin_top = 50.0
-margin_right = 674.0
+margin_right = 452.0
 margin_bottom = 76.0
 size_flags_horizontal = 3
 
@@ -124,7 +124,7 @@ text = "GUNGEON PATH"
 
 [node name="LineEdit" type="LineEdit" parent="MainPanel/ColumnBox/MainInterface/ExeSelect"]
 margin_left = 118.0
-margin_right = 646.0
+margin_right = 424.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
@@ -132,15 +132,23 @@ editable = false
 placeholder_text = "..."
 
 [node name="Button" type="Button" parent="MainPanel/ColumnBox/MainInterface/ExeSelect"]
-margin_left = 650.0
-margin_right = 674.0
+margin_left = 428.0
+margin_right = 452.0
 margin_bottom = 26.0
 custom_fonts/font = ExtResource( 4 )
 text = "..."
 
+[node name="DoneLabel" type="Label" parent="MainPanel/ColumnBox/MainInterface"]
+visible = false
+margin_top = 77.0
+margin_right = 452.0
+margin_bottom = 93.0
+custom_fonts/font = ExtResource( 4 )
+text = "INSTALLED SUCCESSFULLY!"
+
 [node name="NewsTitle" type="Label" parent="MainPanel/ColumnBox/MainInterface"]
 margin_top = 80.0
-margin_right = 674.0
+margin_right = 452.0
 margin_bottom = 126.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 4 )
@@ -150,7 +158,7 @@ uppercase = true
 
 [node name="NewsContent" type="Label" parent="MainPanel/ColumnBox/MainInterface"]
 margin_top = 130.0
-margin_right = 674.0
+margin_right = 452.0
 margin_bottom = 316.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -161,13 +169,13 @@ autowrap = true
 
 [node name="Buttons" type="HBoxContainer" parent="MainPanel/ColumnBox/MainInterface"]
 margin_top = 320.0
-margin_right = 674.0
+margin_right = 452.0
 margin_bottom = 376.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Install" type="Button" parent="MainPanel/ColumnBox/MainInterface/Buttons"]
-margin_right = 608.0
+margin_right = 386.0
 margin_bottom = 56.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -175,14 +183,14 @@ custom_fonts/font = ExtResource( 4 )
 text = "INSTALL"
 
 [node name="Settings" type="Button" parent="MainPanel/ColumnBox/MainInterface/Buttons"]
-margin_left = 612.0
-margin_right = 674.0
+margin_left = 390.0
+margin_right = 452.0
 margin_bottom = 56.0
 icon = ExtResource( 5 )
 
 [node name="Copyright" type="Label" parent="MainPanel/ColumnBox/MainInterface"]
 margin_top = 380.0
-margin_right = 674.0
+margin_right = 452.0
 margin_bottom = 415.0
 custom_fonts/font = ExtResource( 4 )
 text = "(c)Copyright 2016-2019 Mod the Gungeon Contributors
@@ -190,6 +198,7 @@ Licensed under MIT"
 align = 2
 
 [node name="AdvancedInterface" type="VBoxContainer" parent="MainPanel/ColumnBox"]
+editor/display_folded = true
 visible = false
 margin_left = 412.0
 margin_right = 820.0
@@ -442,7 +451,6 @@ current_dir = "/home/zatherz/Projects/ModTheGungeon/Installer.Godot"
 current_path = "/home/zatherz/Projects/ModTheGungeon/Installer.Godot/"
 
 [node name="ETGModWarning" type="WindowDialog" parent="."]
-visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 100.0
@@ -468,7 +476,6 @@ text = "The installer has detected a legacy ETGMod installation in your game fil
 In order to allow for Semi to be installed, please remove the entire game folder and reinstall it (for example, by verifying files on Steam). It's important that you first delete the entire game folder, as the \"reinstall\" option on certain platforms, including Steam, will not remove files added by mods.
 Once you've reinstalled the game, you will be able to use this installer to install Semi."
 autowrap = true
-
 [connection signal="pressed" from="MainPanel/ColumnBox/LeftPane/ErrorButtons/Discord" to="." method="_on_Discord_pressed"]
 [connection signal="pressed" from="MainPanel/ColumnBox/LeftPane/ErrorButtons/LogHaste" to="." method="_on_LogHaste_pressed"]
 [connection signal="pressed" from="MainPanel/ColumnBox/MainInterface/ExeSelect/Button" to="." method="_on_ExePathButton_pressed"]

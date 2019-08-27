@@ -79,6 +79,9 @@ public class Installer : Control {
 	public TextureRect LargeImage;
 	public TextEdit InstallLog;
 
+	public Label DoneLabel;
+	public Label NewsContent;
+
 	public Label InstallErrorLabel;
 	public HBoxContainer InstallErrorButtons;
 	public Button InstallErrorDiscordButton;
@@ -173,6 +176,8 @@ public class Installer : Control {
 	}
 
 	public void Install() {
+		DoneLabel.Hide();
+
 		var opts = OptionOffline.Pressed ? InstallerFrontend.InstallerOptions.Offline : InstallerFrontend.InstallerOptions.None;
 		if (OptionForceBackup.Pressed) opts |= InstallerFrontend.InstallerOptions.ForceBackup;
 		if (OptionForceHTTP.Pressed) opts |= InstallerFrontend.InstallerOptions.HTTP;
@@ -240,6 +245,14 @@ public class Installer : Control {
 		return $"https://hastebin.com/{key}";
 	}
 
+	public string GetNews() {
+		try {
+			using (var wc = new System.Net.WebClient()) return wc.DownloadString("https://raw.githubusercontent.com/ModTheGungeon/ModTheGungeon.github.io/master/semi/news.txt");
+		} catch (WebException e) {
+			return $"Failed to get news - no internet? ({e.Message})";
+		}
+	}
+
     public override void _Ready() {
 		MainInterface = GetNode<VBoxContainer>("MainPanel/ColumnBox/MainInterface");
 		AdvancedInterface = GetNode<VBoxContainer>("MainPanel/ColumnBox/AdvancedInterface");
@@ -269,6 +282,11 @@ public class Installer : Control {
 
 		ExeFileDialog = GetNode<FileDialog>("ExeFileDialog");
 		ETGModWarningDialog = GetNode<WindowDialog>("ETGModWarning");
+
+		DoneLabel = GetNode<Label>("MainPanel/ColumnBox/MainInterface/DoneLabel");
+		NewsContent = GetNode<Label>("MainPanel/ColumnBox/MainInterface/NewsContent");
+
+		NewsContent.Text = GetNews();
 
 		CurrentInterface = MainInterface;
 
@@ -300,6 +318,8 @@ public class Installer : Control {
 
 			if (InstallException != null) {
 				HandleInstallError(InstallException);
+			} else {
+				DoneLabel.Show();
 			}
 		}
 	}
