@@ -250,7 +250,7 @@ public class Installer : Control {
 	public string GetNews() {
 		try {
             GD.Print("getting news");
-			using (var wc = new System.Net.WebClient()) return wc.DownloadString("https://modthegungeon.eu/semi/news.txt");
+			using (var wc = new System.Net.WebClient()) return wc.DownloadString("https://raw.githubusercontent.com/ModTheGungeon/ModTheGungeon.github.io/master/semi/news.txt");
 		} catch (WebException e) {
 			return $"Failed to get news - no internet? ({e.Message})";
 		}
