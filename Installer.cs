@@ -11,6 +11,8 @@ using System.Reflection;
 using System.Net;
 using System.Text;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
 
 //https://stackoverflow.com/a/18727100
 public class FieldWriter : System.IO.TextWriter {
@@ -247,13 +249,19 @@ public class Installer : Control {
 
 	public string GetNews() {
 		try {
-			using (var wc = new System.Net.WebClient()) return wc.DownloadString("https://raw.githubusercontent.com/ModTheGungeon/ModTheGungeon.github.io/master/semi/news.txt");
+            GD.Print("getting news");
+			using (var wc = new System.Net.WebClient()) return wc.DownloadString("https://modthegungeon.eu/semi/news.txt");
 		} catch (WebException e) {
 			return $"Failed to get news - no internet? ({e.Message})";
 		}
 	}
 
     public override void _Ready() {
+        MTGInstaller.Logger.Subscribe((logger, level, indent, str) => {
+            GD.Print($"[{logger.ID} {level}] {str}");
+        });
+		ServicePointManager.ServerCertificateValidationCallback = _RemoteCertificateValidationCallback;
+		
 		MainInterface = GetNode<VBoxContainer>("MainPanel/ColumnBox/MainInterface");
 		AdvancedInterface = GetNode<VBoxContainer>("MainPanel/ColumnBox/AdvancedInterface");
 		HostControllerInterface = GetNode<VBoxContainer>("MainPanel/ColumnBox/HostControllerInterface");
@@ -416,6 +424,29 @@ public class Installer : Control {
 		OS.ShellOpen(DISCORD_INVITE);
 	}
 
+	//https://stackoverflow.com/a/33391290
+	private bool _RemoteCertificateValidationCallback(System.Object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors) {
+	    bool isOk = true;
+	    // If there are errors in the certificate chain,
+	    // look at each error to determine the cause.
+	    if (sslPolicyErrors != SslPolicyErrors.None) {
+	        for (int i=0; i<chain.ChainStatus.Length; i++) {
+	            if (chain.ChainStatus[i].Status == X509ChainStatusFlags.RevocationStatusUnknown) {
+	                continue;
+	            }
+	            chain.ChainPolicy.RevocationFlag = X509RevocationFlag.EntireChain;
+	            chain.ChainPolicy.RevocationMode = X509RevocationMode.Online;
+	            chain.ChainPolicy.UrlRetrievalTimeout = new TimeSpan (0, 1, 0);
+	            chain.ChainPolicy.VerificationFlags = X509VerificationFlags.AllFlags;
+	            bool chainIsValid = chain.Build ((X509Certificate2)certificate);
+	            if (!chainIsValid) {
+	                isOk = false;
+	                break;
+	            }
+	        }
+	    }
+	    return isOk;
+	}
 }
 
 
