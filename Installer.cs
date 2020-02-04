@@ -77,8 +77,11 @@ public class Installer : Control {
 	public CheckBox OptionForceBackup;
 	public CheckBox OptionLeavePatchDLLs;
 	public CheckBox OptionOffline;
+    public CheckBox OptionUnityDebug;
+    public CheckBox OptionILDebug;
+    public LineEdit OptionSevenZipExePath;
 
-	public TextureRect LargeImage;
+    public TextureRect LargeImage;
 	public TextEdit InstallLog;
 
 	public Label DoneLabel;
@@ -133,8 +136,11 @@ public class Installer : Control {
 		OptionForceBackup.Pressed = mtginstaller_settings.ForceBackup;
 		OptionLeavePatchDLLs.Pressed = mtginstaller_settings.LeavePatchDLLs;
 		OptionOffline.Pressed = mtginstaller_settings.Offline;
+        OptionUnityDebug.Pressed = mtginstaller_settings.UnityDebug;
+        OptionILDebug.Pressed = mtginstaller_settings.ILDebug;
+        OptionSevenZipExePath.Text = mtginstaller_settings.SevenZipPath;
 
-		var settings = SemiInstaller.Settings.Instance;
+        var settings = SemiInstaller.Settings.Instance;
 		switch (settings.Architecture) {
 		case null: 
 			ArchitectureList.Text = arch_popup.GetItemText(0);
@@ -169,6 +175,8 @@ public class Installer : Control {
 		components.Add(new ComponentInfo(userdata.Component, null));
 		try {
 			inst.Install(components, userdata.ExePath);
+            if (Settings.Instance.UnityDebug) inst.InstallUnityDebug();
+            if (Settings.Instance.ILDebug) inst.InstallILDebug();
 		}
 		catch (Exception e) {
 			InstallException = e;
@@ -287,8 +295,11 @@ public class Installer : Control {
 		OptionForceBackup = GetNode<CheckBox>("MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/ForceBackup");
 		OptionLeavePatchDLLs = GetNode<CheckBox>("MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/LeavePatchDLLs");
 		OptionOffline = GetNode<CheckBox>("MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/Offline");
+        OptionUnityDebug = GetNode<CheckBox>("MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/UnityDebug");
+        OptionILDebug = GetNode<CheckBox>("MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/ILDebug");
+        OptionSevenZipExePath = GetNode<LineEdit>("MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/7zExePath/7zExePath");
 
-		ExeFileDialog = GetNode<FileDialog>("ExeFileDialog");
+        ExeFileDialog = GetNode<FileDialog>("ExeFileDialog");
 		ETGModWarningDialog = GetNode<WindowDialog>("ETGModWarning");
 
 		DoneLabel = GetNode<Label>("MainPanel/ColumnBox/MainInterface/DoneLabel");
@@ -340,7 +351,7 @@ public class Installer : Control {
 		UpdateView(MainInterface);
 	}
 
-	private void _on_ArchList_id_pressed(int id) {
+    private void _on_ArchList_id_pressed(int id) {
 		ArchitectureList.Text = ArchitectureList.GetPopup().GetItemText(id);
 		switch (ArchitectureList.Text) {
 			case "Autodetect": SemiInstaller.Settings.Instance.Architecture = null; break;
@@ -408,7 +419,24 @@ public class Installer : Control {
 		Settings.Instance.Save();
 	}
 
-	private void _on_Install_pressed() {
+    private void _on_ILDebug_toggled(bool button_pressed) {
+        Settings.Instance.ILDebug = button_pressed;
+        Settings.Instance.Save();
+    }
+
+
+    private void _on_UnityDebug_toggled(bool button_pressed) {
+        Settings.Instance.UnityDebug = button_pressed;
+        Settings.Instance.Save();
+    }
+
+    private void _on_7zExePath_text_changed(string new_text) {
+        if (new_text.Length == 0) new_text = null;
+        Settings.Instance.SevenZipPath = new_text;
+        Settings.Instance.Save();
+    }
+
+    private void _on_Install_pressed() {
 		Install();
 	}
 

@@ -36,13 +36,13 @@ margin_bottom = -10.0
 custom_constants/separation = 20
 
 [node name="LeftPane" type="VBoxContainer" parent="MainPanel/ColumnBox"]
-margin_right = 348.0
+margin_right = 462.0
 margin_bottom = 417.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="LargeImage" type="TextureRect" parent="MainPanel/ColumnBox/LeftPane"]
-margin_right = 348.0
+margin_right = 462.0
 margin_bottom = 417.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -92,15 +92,15 @@ custom_fonts/font = ExtResource( 4 )
 text = "Copy log"
 
 [node name="MainInterface" type="VBoxContainer" parent="MainPanel/ColumnBox"]
-margin_left = 368.0
-margin_right = 820.0
+margin_left = 482.0
+margin_right = 944.0
 margin_bottom = 417.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="Title" type="Label" parent="MainPanel/ColumnBox/MainInterface"]
-margin_right = 452.0
+margin_right = 462.0
 margin_bottom = 46.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -111,7 +111,7 @@ valign = 1
 
 [node name="ExeSelect" type="HBoxContainer" parent="MainPanel/ColumnBox/MainInterface"]
 margin_top = 50.0
-margin_right = 452.0
+margin_right = 462.0
 margin_bottom = 76.0
 size_flags_horizontal = 3
 
@@ -124,7 +124,7 @@ text = "GUNGEON PATH"
 
 [node name="LineEdit" type="LineEdit" parent="MainPanel/ColumnBox/MainInterface/ExeSelect"]
 margin_left = 118.0
-margin_right = 424.0
+margin_right = 434.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
@@ -132,8 +132,8 @@ editable = false
 placeholder_text = "..."
 
 [node name="Button" type="Button" parent="MainPanel/ColumnBox/MainInterface/ExeSelect"]
-margin_left = 428.0
-margin_right = 452.0
+margin_left = 438.0
+margin_right = 462.0
 margin_bottom = 26.0
 custom_fonts/font = ExtResource( 4 )
 text = "..."
@@ -148,7 +148,7 @@ text = "INSTALLED SUCCESSFULLY!"
 
 [node name="NewsTitle" type="Label" parent="MainPanel/ColumnBox/MainInterface"]
 margin_top = 80.0
-margin_right = 452.0
+margin_right = 462.0
 margin_bottom = 126.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 4 )
@@ -158,7 +158,7 @@ uppercase = true
 
 [node name="NewsContent" type="Label" parent="MainPanel/ColumnBox/MainInterface"]
 margin_top = 130.0
-margin_right = 452.0
+margin_right = 462.0
 margin_bottom = 316.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -169,13 +169,13 @@ autowrap = true
 
 [node name="Buttons" type="HBoxContainer" parent="MainPanel/ColumnBox/MainInterface"]
 margin_top = 320.0
-margin_right = 452.0
+margin_right = 462.0
 margin_bottom = 376.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Install" type="Button" parent="MainPanel/ColumnBox/MainInterface/Buttons"]
-margin_right = 386.0
+margin_right = 396.0
 margin_bottom = 56.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -183,14 +183,14 @@ custom_fonts/font = ExtResource( 4 )
 text = "INSTALL"
 
 [node name="Settings" type="Button" parent="MainPanel/ColumnBox/MainInterface/Buttons"]
-margin_left = 390.0
-margin_right = 452.0
+margin_left = 400.0
+margin_right = 462.0
 margin_bottom = 56.0
 icon = ExtResource( 5 )
 
 [node name="Copyright" type="Label" parent="MainPanel/ColumnBox/MainInterface"]
 margin_top = 380.0
-margin_right = 452.0
+margin_right = 462.0
 margin_bottom = 415.0
 custom_fonts/font = ExtResource( 4 )
 text = "(c)Copyright 2016-2019 Mod the Gungeon Contributors
@@ -198,17 +198,16 @@ Licensed under MIT"
 align = 2
 
 [node name="AdvancedInterface" type="VBoxContainer" parent="MainPanel/ColumnBox"]
-editor/display_folded = true
 visible = false
-margin_left = 412.0
-margin_right = 820.0
+margin_left = 492.0
+margin_right = 944.0
 margin_bottom = 417.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Title" type="Label" parent="MainPanel/ColumnBox/AdvancedInterface"]
-margin_right = 408.0
-margin_bottom = 61.0
+margin_right = 452.0
+margin_bottom = 55.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 4 )
@@ -217,29 +216,29 @@ align = 1
 valign = 1
 
 [node name="Warning" type="Label" parent="MainPanel/ColumnBox/AdvancedInterface"]
-margin_top = 65.0
-margin_right = 408.0
-margin_bottom = 100.0
+margin_top = 59.0
+margin_right = 452.0
+margin_bottom = 94.0
 custom_fonts/font = ExtResource( 4 )
 text = "Note: don't change these settings unless you know what they are for!"
 autowrap = true
 
 [node name="Settings" type="ScrollContainer" parent="MainPanel/ColumnBox/AdvancedInterface"]
-margin_top = 104.0
-margin_right = 408.0
-margin_bottom = 350.0
+margin_top = 98.0
+margin_right = 452.0
+margin_bottom = 318.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
 
 [node name="SettingsList" type="VBoxContainer" parent="MainPanel/ColumnBox/AdvancedInterface/Settings"]
-margin_right = 408.0
-margin_bottom = 246.0
+margin_right = 452.0
+margin_bottom = 326.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Component" type="HBoxContainer" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList"]
-margin_right = 408.0
+margin_right = 440.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 
@@ -254,7 +253,7 @@ text = "Component"
 
 [node name="Content" type="LineEdit" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/Component"]
 margin_left = 92.0
-margin_right = 408.0
+margin_right = 440.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -264,7 +263,7 @@ text = "semi"
 
 [node name="Architecture" type="HBoxContainer" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList"]
 margin_top = 30.0
-margin_right = 408.0
+margin_right = 440.0
 margin_bottom = 52.0
 size_flags_horizontal = 3
 
@@ -279,7 +278,7 @@ text = "Architecture"
 
 [node name="ArchList" type="MenuButton" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/Architecture"]
 margin_left = 106.0
-margin_right = 408.0
+margin_right = 440.0
 margin_bottom = 22.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -290,7 +289,7 @@ flat = false
 
 [node name="Log" type="CheckBox" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList"]
 margin_top = 56.0
-margin_right = 408.0
+margin_right = 440.0
 margin_bottom = 80.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
@@ -298,7 +297,7 @@ text = "Show log while installing"
 
 [node name="ForceHTTP" type="CheckBox" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList"]
 margin_top = 84.0
-margin_right = 408.0
+margin_right = 440.0
 margin_bottom = 108.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
@@ -306,7 +305,7 @@ text = "Force insecure HTTP"
 
 [node name="SkipVersionChecks" type="CheckBox" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList"]
 margin_top = 112.0
-margin_right = 408.0
+margin_right = 440.0
 margin_bottom = 136.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
@@ -314,7 +313,7 @@ text = "Skip version check"
 
 [node name="ForceBackup" type="CheckBox" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList"]
 margin_top = 140.0
-margin_right = 408.0
+margin_right = 440.0
 margin_bottom = 164.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
@@ -322,40 +321,91 @@ text = "Force backup from current state"
 
 [node name="LeavePatchDLLs" type="CheckBox" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList"]
 margin_top = 168.0
-margin_right = 408.0
+margin_right = 440.0
 margin_bottom = 192.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 text = "Leave MonoMod patch DLLs"
 
 [node name="Offline" type="CheckBox" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList"]
-margin_top = 168.0
-margin_right = 408.0
-margin_bottom = 192.0
+margin_top = 196.0
+margin_right = 440.0
+margin_bottom = 220.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 4 )
 text = "Offline Mode"
 
+[node name="DebugSection" type="Label" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList"]
+margin_top = 224.0
+margin_right = 440.0
+margin_bottom = 240.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 4 )
+text = "DEBUGGING"
+align = 1
+valign = 1
+
+[node name="UnityDebug" type="CheckBox" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList"]
+margin_top = 244.0
+margin_right = 440.0
+margin_bottom = 268.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "Unity debug build"
+
+[node name="ILDebug" type="CheckBox" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList"]
+margin_top = 272.0
+margin_right = 440.0
+margin_bottom = 296.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 4 )
+text = "IL debugging"
+
+[node name="7zExePath" type="HBoxContainer" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList"]
+margin_top = 300.0
+margin_right = 440.0
+margin_bottom = 326.0
+size_flags_horizontal = 3
+
+[node name="Path" type="Label" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/7zExePath"]
+margin_top = 5.0
+margin_right = 100.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
+custom_fonts/font = ExtResource( 4 )
+text = "7z Exe Path"
+
+[node name="7zExePath" type="LineEdit" parent="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/7zExePath"]
+margin_left = 104.0
+margin_right = 440.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 6.0
+custom_fonts/font = ExtResource( 4 )
+placeholder_text = "/usr/bin/7z, C:\\Program Files\\7zip\\7z.exe"
+
 [node name="Buttons" type="HBoxContainer" parent="MainPanel/ColumnBox/AdvancedInterface"]
-margin_top = 354.0
-margin_right = 408.0
-margin_bottom = 417.0
+margin_top = 322.0
+margin_right = 452.0
+margin_bottom = 377.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="OK" type="Button" parent="MainPanel/ColumnBox/AdvancedInterface/Buttons"]
-margin_right = 408.0
-margin_bottom = 63.0
+margin_right = 452.0
+margin_bottom = 55.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 4 )
 text = "OK"
 
 [node name="Copyright" type="Label" parent="MainPanel/ColumnBox/AdvancedInterface"]
-margin_left = 504.0
-margin_top = 191.0
-margin_right = 956.0
-margin_bottom = 226.0
+margin_top = 381.0
+margin_right = 452.0
+margin_bottom = 416.0
 custom_fonts/font = ExtResource( 4 )
 text = "(c)Copyright 2016-2019 Mod the Gungeon Contributors
 Licensed under MIT"
@@ -443,12 +493,12 @@ align = 2
 [node name="ExeFileDialog" type="FileDialog" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-window_title = "Otwórz plik"
+window_title = "Open a File"
 mode = 0
 access = 2
 filters = PoolStringArray( "EtG.exe", "EtG_OSX", "EtG.x86", "EtG.x86_64" )
-current_dir = "C:/Users/USER/Projects/ModTheGungeon/SemiInstaller"
-current_path = "C:/Users/USER/Projects/ModTheGungeon/SemiInstaller/"
+current_dir = "/home/zatherz/Projects/ModTheGungeon/Installer.Godot"
+current_path = "/home/zatherz/Projects/ModTheGungeon/Installer.Godot/"
 
 [node name="ETGModWarning" type="WindowDialog" parent="."]
 anchor_right = 1.0
@@ -488,5 +538,8 @@ autowrap = true
 [connection signal="toggled" from="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/ForceBackup" to="." method="_on_ForceBackup_toggled"]
 [connection signal="toggled" from="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/LeavePatchDLLs" to="." method="_on_LeavePatchDLLs_toggled"]
 [connection signal="toggled" from="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/Offline" to="." method="_on_Offline_toggled"]
+[connection signal="toggled" from="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/UnityDebug" to="." method="_on_UnityDebug_toggled"]
+[connection signal="toggled" from="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/ILDebug" to="." method="_on_ILDebug_toggled"]
+[connection signal="text_changed" from="MainPanel/ColumnBox/AdvancedInterface/Settings/SettingsList/7zExePath/7zExePath" to="." method="_on_7zExePath_text_changed"]
 [connection signal="pressed" from="MainPanel/ColumnBox/AdvancedInterface/Buttons/OK" to="." method="_on_OK_pressed"]
 [connection signal="file_selected" from="ExeFileDialog" to="." method="_on_ExeFileDialog_file_selected"]
