@@ -20,27 +20,43 @@ public class FieldWriter : System.IO.TextWriter {
 	private string _Field;
 	private Type _Type;
 	private FieldInfo _FieldInfo;
+    private int _LastLine;
 
 	public FieldWriter(object obj, string field) {
 		_Target = obj;
 		_Field = field;
 		_Type = obj.GetType();
 		_FieldInfo = _Type.GetField(field, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+        _LastLine = 0;
 	}
 
 	public override void Write(char value) {
 		var val = _FieldInfo.GetValue(_Target) as string;
 		if (val == null) val = "";
 
-		_FieldInfo.SetValue(_Target, $"{val}{value}");
+        if (value == '\r') {
+            for (var i = val.Length - 1; i >= 0; i--) {
+                if (val[i] == '\n') {
+                    val = val.Substring(0, i - 1);
+                }
+            }
+        }
+        _FieldInfo.SetValue(_Target, $"{val}{value}");
 	}
 
 	public override void Write(string value) {
 		var val = _FieldInfo.GetValue(_Target) as string;
 		if (val == null) val = "";
 
-		_FieldInfo.SetValue(_Target, $"{val}{value}");
-	}
+        if (value.Length > 0 && value[value.Length - 1] == '\r') {
+            for (var i = val.Length - 1; i >= 0; i--) {
+                if (val[i] == '\n') {
+                    val = val.Substring(0, i - 1);
+                }
+            }
+        }
+        _FieldInfo.SetValue(_Target, $"{val}{value}");
+    }
 
 	public override System.Text.Encoding Encoding {
 		get { return System.Text.Encoding.ASCII; }
